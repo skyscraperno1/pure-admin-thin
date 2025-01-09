@@ -3,14 +3,15 @@ import {
   type cacheType,
   store,
   debounce,
-  ascending,
+  // ascending,
   getKeyList,
-  filterTree,
+  // filterTree,
   constantMenus,
-  filterNoPermissionTree,
+  // filterNoPermissionTree,
   formatFlatteningRoutes
 } from "../utils";
 import { useMultiTagsStoreHook } from "./multiTags";
+import { cloneDeep } from "@pureadmin/utils";
 
 export const usePermissionStore = defineStore({
   id: "pure-permission",
@@ -27,9 +28,7 @@ export const usePermissionStore = defineStore({
   actions: {
     /** 组装整体路由生成的菜单 */
     handleWholeMenus(routes: any[]) {
-      this.wholeMenus = filterNoPermissionTree(
-        filterTree(ascending(this.constantMenus.concat(routes)))
-      );
+      this.wholeMenus = cloneDeep(routes);
       this.flatteningRoutes = formatFlatteningRoutes(
         this.constantMenus.concat(routes)
       );
