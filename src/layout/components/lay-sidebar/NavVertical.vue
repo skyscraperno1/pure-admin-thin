@@ -88,7 +88,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div
-    v-loading="loading"
+    v-loading="false"
     :class="['sidebar-container', showLogo ? 'has-logo' : 'no-logo']"
     @mouseenter.prevent="isShow = true"
     @mouseleave.prevent="isShow = false"

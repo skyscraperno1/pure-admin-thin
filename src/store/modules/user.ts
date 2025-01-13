@@ -15,7 +15,7 @@ import {
   removeToken,
   userKey
 } from "@/utils/auth";
-import { loginApi } from "@/api/login";
+import { loginApi, logoutApi } from "@/api/login";
 
 export const useUserStore = defineStore({
   id: "pure-user",
@@ -69,6 +69,7 @@ export const useUserStore = defineStore({
       this.roles = [];
       this.permissions = [];
       removeToken();
+      logoutApi()
       useMultiTagsStoreHook().handleTags("equal", [...routerArrays]);
       resetRouter();
       router.push("/login");

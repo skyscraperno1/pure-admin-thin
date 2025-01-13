@@ -18,6 +18,11 @@ export const loginApi = (data?: object) => {
   return http.request<Result>("post", "/back/auth/login", { data });
 };
 
+/** 登出 */
+export const logoutApi = () => {
+  return http.request<Result>("post", "/back/auth/logout");
+};
+
 /** 获取用户信息 */
 export const getUserInfo = (data?: object) => {
   return http.request<Result>("get", "/back/admin/info", { data });
